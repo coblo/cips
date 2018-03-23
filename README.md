@@ -2,9 +2,9 @@
 
 This document is governed by the [2/COSS](https://rfc.unprotocols.org/spec:2/COSS/) (COSS).
 
-| Number                         | Title                  | Type   | Status |
+| ID                         | Title                  | Type   | Status |
 | ------------------------------ | ---------------------- | ------ | ------ |
-| [1](cips/cip-0001-alias.md)        | Wallet Address Aliases | Stream | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg)  |
-| [2](cips/cip-0002-timestamp.md)    | Content Timestamping   | Stream | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg)  |
-| [3](cips/cip-0003-iscc.md)         | ISCC Registration      | Stream | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg)  |
-| [4](cips/cip-0004-smartlicense.md) | Smart Licenses         | Stream | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)      |
+| [CIP-0001](cip-0001-alias.md)        | Wallet Address Aliases | Stream | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg)  |
+| [CIP-0002](cip-0002-timestamp.md)    | Content Timestamping   | Stream | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg)  |
+| [CIP-0003](cip-0003-iscc.md)         | ISCC Registration      | Stream | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg)  |
+| [CIP-0004](cip-0004-smartlicense.md) | Smart Licenses         | Stream | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)      |
