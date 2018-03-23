@@ -2,7 +2,7 @@
 site_name: 'Content Blockchain - CIPS'
 site_description: 'Content Blockchain Improvement Proposals'
 site_author: 'The Content Blockchain Community'
-site_url: 'https://github.com/coblo/cips'
+site_url: 'https://coblo.github.io/cips/'
 
 # Repository
 repo_name: 'coblo/cips'
