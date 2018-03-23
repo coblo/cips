@@ -1,12 +1,12 @@
 # Wallet Address Aliases
 
-| CIP:     | 0001                                                       |
-| -------- | ---------------------------------------------------------- |
-| Title:   | Wallet Address Aliases                                     |
-| Authos:  | TP                                                         |
-| Status:  | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) |
-| Created: | 2017-10-31                                                 |
-| License: | BSD-2-Clause                                               |
+| CIP:     | 0001                                                         |
+| -------- | ------------------------------------------------------------ |
+| Title:   | Wallet Address Aliases                                       |
+| Authos:  | TP                                                           |
+| Status:  | ![Stable](http://rfc.unprotocols.org/spec:2/COSS/stable.svg) |
+| Created: | 2017-10-31                                                   |
+| License: | BSD-2-Clause                                                 |
 
 ## Purpose
 
@@ -32,7 +32,6 @@ releases the old alias for registration by other wallet addresses.
 
 An alias can be re-assigned to a new address after the autoritative owner has 
 released the alias by registering another alias to his address.
-
 
 ## Validation
 

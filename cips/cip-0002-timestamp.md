@@ -1,12 +1,12 @@
 # Content Timestamping
 
-| CIP:     | 0002                                                       |
-| -------- | ---------------------------------------------------------- |
-| Title:   | Content Timestamping                                       |
-| Authos:  | TP                                                         |
-| Status:  | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) |
-| Created: | 2017-11-09                                                 |
-| License: | BSD-2-Clause                                               |
+| CIP:     | 0002                                                         |
+| -------- | ------------------------------------------------------------ |
+| Title:   | Content Timestamping                                         |
+| Authos:  | TP                                                           |
+| Status:  | ![Stable](http://rfc.unprotocols.org/spec:2/COSS/stable.svg) |
+| Created: | 2017-11-09                                                   |
+| License: | BSD-2-Clause                                                 |
 
 ## Purpose
 
@@ -17,15 +17,15 @@ integrity of the timestamped data without publicly revealing the content
 itself. Additionaly publisher of a timespamping transaction can prove control
 over the address that signed the transaction. This document speciefies an
 open timestamping stream named `timestamp` that can be used to publish
-document of file hashes as proof of existence.
+document or file hashes as proof of existence.
 
 ## Schema
 
 The timestamp-stream is readable and writable by every blockchain participant.
 The timestamp key must be published as a hex encoded sha256 hash of the data
-to be timestamped. The data_hex value is optional.
+to be timestamped. The `data_hex` value is optional.
 
-If data_hex is included it must be a [UBJSON](http://ubjson.org/)-encoded
+If `data_hex` is included it must be a [UBJSON](http://ubjson.org/)-encoded
 data-mapping. Currently the only officially recognized key in that 
 datamapping is `comment` which can be any comment about the timestamped 
 document like document name, version or reason for timestamping. 
