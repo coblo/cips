@@ -1,13 +1,13 @@
----
-Cip: 3
-Title: ISCC Registration v1.0
-Author: Titusz <tp@py7.de>
-Status: Draft
-Created: 2018-01-13
-License: BSD-2-Clause
----
+# ISCC Registration
 
-# ISCC
+| CIP:     | 0003                                                       |
+| -------- | ---------------------------------------------------------- |
+| Title:   | ISCC Registration                                   |
+| Authos:  | TP                                                         |
+| Status:  | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) |
+| Created: | 2018-01-13                                                |
+| License: | BSD-2-Clause                                               |
+
 
 ## Purpose
 

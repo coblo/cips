@@ -1,13 +1,12 @@
----
-Cip: 2
-Title: Content Timestamping
-Author: Titusz <tp@py7.de>
-Status: Draft
-Created: 2017-11-09
-License: BSD-2-Clause
----
-
 # Content Timestamping
+
+| CIP:     | 0002                                                       |
+| -------- | ---------------------------------------------------------- |
+| Title:   | Content Timestamping                                       |
+| Authos:  | TP                                                         |
+| Status:  | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) |
+| Created: | 2017-11-09                                                 |
+| License: | BSD-2-Clause                                               |
 
 ## Purpose
 

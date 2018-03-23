@@ -1,13 +1,12 @@
----
-Cip: 4
-Title: Smart Licenses
-Author: Titusz <tp@py7.de>, Patricia <schinke@creations.de>
-Status: Raw
-Created: 2018-01-12
-License: BSD-2-Clause
----
-
 # Smart Licenses
+
+| CIP:     | 0004                                                       |
+| -------- | ---------------------------------------------------------- |
+| Title:   | Smart Licenses                                             |
+| Authos:  | TP                                                         |
+| Status:  | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)     |
+| Created: | 2018-01-12                                                 |
+| License: | BSD-2-Clause                                               |
 
 ## Purpose
 

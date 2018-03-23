@@ -5,8 +5,8 @@
 | Title:   | Wallet Address Aliases                                     |
 | Authos:  | TP                                                         |
 | Status:  | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) |
-| Status:  | 2017-10-31                                                 |
-| License: | License                                                    |
+| Created: | 2017-10-31                                                 |
+| License: | BSD-2-Clause                                               |
 
 ## Purpose
 
