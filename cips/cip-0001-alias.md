@@ -2,7 +2,7 @@
 Cip: 1
 Title: Wallet Address Aliases
 Author: Titusz <tp@py7.de>
-Status: ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg)
+Status: Draft
 Created: 2017-10-31
 License: BSD-2-Clause
 ---

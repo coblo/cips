@@ -2,7 +2,7 @@
 Cip: 3
 Title: ISCC Registration v1.0
 Author: Titusz <tp@py7.de>
-Status: ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg)
+Status: Draft
 Created: 2018-01-13
 License: BSD-2-Clause
 ---
