@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://coblo.github.io/cips/cip-0002-timestamp/">
       
       
-        <meta name="author" content="T">
+        <meta name="author" content="The Content Blockchain Community">
       
       
         <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Content Timestamping</title>
+        <title>CIP0002 - Content Timestamping - Content Blockchain - CIPS</title>
       
     
     
@@ -397,6 +397,36 @@
                 
                 
                 <h1 id="content-timestamping">Content Timestamping<a class="headerlink" href="#content-timestamping" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>CIP:</th>
+<th>0002</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Title:</td>
+<td>Content Timestamping</td>
+</tr>
+<tr>
+<td>Authos:</td>
+<td>TP</td>
+</tr>
+<tr>
+<td>Status:</td>
+<td><img alt="Stable" src="http://rfc.unprotocols.org/spec:2/COSS/stable.svg" /></td>
+</tr>
+<tr>
+<td>Created:</td>
+<td>2017-11-09</td>
+</tr>
+<tr>
+<td>License:</td>
+<td>BSD-2-Clause</td>
+</tr>
+</tbody>
+</table>
 <h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
 <p>Content Timestamping is used to record a digital fingerprint of a document on 
 decentralized and tamper-proof blockchain. The timestamp serves as a secure 
@@ -405,12 +435,12 @@ integrity of the timestamped data without publicly revealing the content
 itself. Additionaly publisher of a timespamping transaction can prove control
 over the address that signed the transaction. This document speciefies an
 open timestamping stream named <code>timestamp</code> that can be used to publish
-document of file hashes as proof of existence.</p>
+document or file hashes as proof of existence.</p>
 <h2 id="schema">Schema<a class="headerlink" href="#schema" title="Permanent link">&para;</a></h2>
 <p>The timestamp-stream is readable and writable by every blockchain participant.
 The timestamp key must be published as a hex encoded sha256 hash of the data
-to be timestamped. The data_hex value is optional.</p>
-<p>If data_hex is included it must be a <a href="http://ubjson.org/">UBJSON</a>-encoded
+to be timestamped. The <code>data_hex</code> value is optional.</p>
+<p>If <code>data_hex</code> is included it must be a <a href="http://ubjson.org/">UBJSON</a>-encoded
 data-mapping. Currently the only officially recognized key in that 
 datamapping is <code>comment</code> which can be any comment about the timestamped 
 document like document name, version or reason for timestamping. 

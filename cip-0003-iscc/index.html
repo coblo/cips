@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://coblo.github.io/cips/cip-0003-iscc/">
       
       
-        <meta name="author" content="T">
+        <meta name="author" content="The Content Blockchain Community">
       
       
         <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -42,7 +42,7 @@
     
     
       
-        <title>ISCC Registration v1.0</title>
+        <title>CIP0003 - ISCC Registration - Content Blockchain - CIPS</title>
       
     
     
@@ -101,7 +101,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#iscc" tabindex="1" class="md-skip">
+      <a href="#iscc-registration" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -351,15 +351,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tails-optional" title="tails (optional)" class="md-nav__link">
-    tails (optional)
+  <a href="#hash-optional" title="hash (optional)" class="md-nav__link">
+    hash (optional)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#metadata-optional" title="metadata (optional)" class="md-nav__link">
-    metadata (optional)
+  <a href="#meta-optional" title="meta (optional)" class="md-nav__link">
+    meta (optional)
   </a>
   
 </li>
@@ -469,15 +469,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tails-optional" title="tails (optional)" class="md-nav__link">
-    tails (optional)
+  <a href="#hash-optional" title="hash (optional)" class="md-nav__link">
+    hash (optional)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#metadata-optional" title="metadata (optional)" class="md-nav__link">
-    metadata (optional)
+  <a href="#meta-optional" title="meta (optional)" class="md-nav__link">
+    meta (optional)
   </a>
   
 </li>
@@ -518,28 +518,80 @@
                   <a href="https://github.com/coblo/cips/blob/master/cips/cip-0003-iscc.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="iscc">ISCC<a class="headerlink" href="#iscc" title="Permanent link">&para;</a></h1>
+                <h1 id="iscc-registration">ISCC Registration<a class="headerlink" href="#iscc-registration" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>CIP:</th>
+<th>0003</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Title:</td>
+<td>ISCC Registration</td>
+</tr>
+<tr>
+<td>Authos:</td>
+<td>TP</td>
+</tr>
+<tr>
+<td>Status:</td>
+<td><img alt="Draft" src="http://rfc.unprotocols.org/spec:2/COSS/draft.svg" /></td>
+</tr>
+<tr>
+<td>Created:</td>
+<td>2018-01-13</td>
+</tr>
+<tr>
+<td>License:</td>
+<td>BSD-2-Clause</td>
+</tr>
+</tbody>
+</table>
 <h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
-<p>An open an public registry for <a href="http://iscc.codes/">ISCC</a> content identifiers. This documents specifies an open stream named <code>iscc</code> that can be used to register ISCC content codes and optionally associated metadata.</p>
+<p>An open an public registry for <a href="http://iscc.codes/">ISCC</a> content identifiers. 
+This documents specifies an open stream named <code>iscc</code> that can be used to 
+register ISCC content codes and optionally associated metadata.</p>
 <h2 id="schema">Schema<a class="headerlink" href="#schema" title="Permanent link">&para;</a></h2>
-<p>The ISCC-stream is named <code>iscc</code> and is readable and writable by every blockchain participant. The stream uses multiple keys for each stream-item where each key represents one of the 4 ISCC components:
-<code>MetaID</code>, <code>ContentID</code>, <code>DataID</code>,<code>InstanceID</code>.</p>
-<p>The stream-item value must be a json object that supports a set of defined top-level fields which are specified below. Applications <strong>may</strong> add custom fields at the top level but <strong>must</strong> prefix those fields with an underscore to avoid collisions with future extensions of this specification. </p>
+<p>The ISCC-stream is named <code>iscc</code> and is readable and writable by every 
+blockchain participant. The stream uses multiple keys for each stream-item 
+where each key represents one of the 4 ISCC components:
+<code>Meta-ID</code>, <code>Content-ID</code>, <code>Data-ID</code>, <code>Instance-ID</code>.</p>
+<p>The stream-item value must be a JSON object that supports a set of defined 
+top-level fields which are specified below. Applications <strong>may</strong> add custom 
+fields at the top level but <strong>must</strong> prefix those fields with an underscore to 
+avoid collisions with future extensions of the 
+<a href="http://iscc.codes/specification/#iscc-metadata">ISCC Metadata specification</a>. </p>
 <h3 id="top-level-fields">Top-Level Fields<a class="headerlink" href="#top-level-fields" title="Permanent link">&para;</a></h3>
 <h4 id="version-optional">version (optional)<a class="headerlink" href="#version-optional" title="Permanent link">&para;</a></h4>
 <p>Version of ISCC registry schema. Assumed to be 1.0 if omitted.</p>
 <h4 id="title-required">title (required)<a class="headerlink" href="#title-required" title="Permanent link">&para;</a></h4>
 <p>Title of an intangible creation.</p>
-<p>The UTF-8 encoded value of the <code>title</code>-field must not exceed 128 bytes. For a valid <strong>ISCC</strong> entry the value of this field together with the optional <code>extra</code>-field must encode to the MetaID that was given as the first key of the stream-item.</p>
+<p>The UTF-8 encoded value of the <code>title</code>-field must not exceed 128 bytes. For a 
+valid <strong>ISCC</strong> entry the value of this field together with the optional 
+<code>extra</code>-field must encode to the MetaID that was given as the first key of the 
+stream-item.</p>
 <h4 id="extra-optional">extra (optional)<a class="headerlink" href="#extra-optional" title="Permanent link">&para;</a></h4>
 <p>A short statement that distinguishes this intangible creation from another one. </p>
 <p>The UTF-8 encoded value of the <code>extra</code>-field must not exceed 128 bytes.</p>
-<h4 id="tails-optional">tails (optional)<a class="headerlink" href="#tails-optional" title="Permanent link">&para;</a></h4>
-<p>Extended ISCC-Component data.</p>
-<p>A JSON object with the following possible fields <code>meta</code>, <code>content</code>, <code>data</code>, <code>instance</code>, where the values are 192-bit hex encoded ISCC component tails. At least one of the listed fields is required for a valid tails JSON object. Notes: ISCC components are assembled from a 1-byte header and an 8-byte main section. The main section is the truncated version of a 32-byte fingerprint. This field allows to supply the remaining 24-byte extended component data for advanced use cases that require higher dimensional binary vectors.</p>
-<h4 id="metadata-optional">metadata (optional)<a class="headerlink" href="#metadata-optional" title="Permanent link">&para;</a></h4>
-<p>A list of one or more metadata entries. Must include at least one entry if specified. </p>
-<p>A metadata entry allows for a flexible and extendable way to supply additional industry specific metadata about the identified content. It is a JSON object with the fields <code>schema</code>, <code>mediatype</code>, <code>data</code>, <code>url</code>. The <code>schema</code>-field may indicate a well known metadata schema (such as Dublin Core, IPTC, ID3v2, ONIX) that is used. The <code>mediatype</code>-field specifies an <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Type</a>. The <code>data</code>-field is only required if the<code>url</code> field is omitted. It holds the metadata conforming to the indicated <code>schema</code> and <code>mediatype.</code> The <code>url</code>-field is only required if the <code>data</code>-field is omitted. The <code>url</code> is an external link that is expected to host the metadata with the indicated <code>schema</code> and <code>mediatype</code>.  </p>
+<h4 id="hash-optional">hash (optional)<a class="headerlink" href="#hash-optional" title="Permanent link">&para;</a></h4>
+<p>The full 64 character hex-encoded top-hash (merkle root) retuned by the 
+instance_id function.</p>
+<h4 id="meta-optional">meta (optional)<a class="headerlink" href="#meta-optional" title="Permanent link">&para;</a></h4>
+<p>A list of one or more metadata entries. Must include at least one entry if 
+specified. </p>
+<p>A metadata entry allows for a flexible and extendable way to supply additional 
+industry specific metadata about the identified content. It is a JSON object 
+with the fields <code>schema</code>, <code>mediatype</code>, <code>data</code>, <code>url</code>. The <code>schema</code>-field may 
+indicate a well known metadata schema (such as Dublin Core, IPTC, ID3v2, ONIX) 
+that is used. The <code>mediatype</code>-field specifies an 
+<a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Type</a>. 
+The <code>data</code>-field is only required if the<code>url</code> field is omitted. It holds the 
+metadata conforming to the indicated <code>schema</code> and <code>mediatype.</code> The <code>url</code>-field 
+is only required if the <code>data</code>-field is omitted. The <code>url</code> is an external link 
+that is expected to host the metadata with the indicated <code>schema</code> and 
+<code>mediatype</code>.  </p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <p>Minimal <strong>ISCC</strong> registry entry value:</p>
 <div class="codehilite"><pre><span></span><span class="p">{</span>
@@ -554,22 +606,16 @@
 <span class="p">}</span>
 </pre></div>
 
-<p>With extended <strong>ISCC</strong> tails:</p>
+<p>With <strong>ISCC</strong> data integrity hash:</p>
 <p><div class="codehilite"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;The Neverending Story&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;tails&quot;</span><span class="p">:</span>
-  <span class="p">{</span>
-    <span class="nt">&quot;meta&quot;</span><span class="p">:</span> <span class="s2">&quot;6e5ef0c142805ffc66c721394a66236b57aba8f9aee000dd&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;5e3d5f623691d0e948cdc906f5c68602744934234fefdfa6&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;c0b07d2bbcc2c6fb97739c24c7a65964c042808c3885bcd3&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;instance&quot;</span><span class="p">:</span> <span class="s2">&quot;50859ea4550a2a27045c5c5dad39f8d198717486dc8fef79&quot;</span>
-  <span class="p">}</span>
+  <span class="nt">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;40aeb0ef856a8dbfa4e9897de98b1a1eef7e24f8744e65cd33118b40d9741147&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 With linked Metadata:</p>
 <div class="codehilite"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Ubu: A face-to-face connector app for Hubud members&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> 
+  <span class="nt">&quot;meta&quot;</span><span class="p">:</span> 
   <span class="p">[</span>
     <span class="p">{</span>
       <span class="nt">&quot;schema&quot;</span><span class="p">:</span> <span class="s2">&quot;xmp&quot;</span><span class="p">,</span>
@@ -583,7 +629,7 @@ With linked Metadata:</p>
 <p>With custom inline Metadata:</p>
 <div class="codehilite"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;The Neverending Story&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> 
+  <span class="nt">&quot;meta&quot;</span><span class="p">:</span> 
   <span class="p">[{</span>
     <span class="nt">&quot;schema&quot;</span><span class="p">:</span> <span class="s2">&quot;schema.org&quot;</span><span class="p">,</span>
     <span class="nt">&quot;mediatype&quot;</span><span class="p">:</span> <span class="s2">&quot;application/ld+json&quot;</span><span class="p">,</span>
