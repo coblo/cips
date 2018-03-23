@@ -94,7 +94,7 @@ With **ISCC** data integrity hash:
 ```json
 {
   "title": "The Neverending Story",
-  "hash": "40aeb0ef856a8dbfa4e9897de98b1a1eef7e24f8744e65cd33118b40d9741147",
+  "hash": "40aeb0ef856a8dbfa4e9897de98b1a1eef7e24f8744e65cd33118b40d9741147"
 }
 ```
 With linked Metadata:
