@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
+    <url>
+     <loc>https://github.com/coblo/cips/</loc>
+     <lastmod>2018-03-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://github.com/coblo/cips/cip-0001-alias/</loc>
+     <lastmod>2018-03-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://github.com/coblo/cips/cip-0002-timestamp/</loc>
+     <lastmod>2018-03-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://github.com/coblo/cips/cip-0003-iscc/</loc>
+     <lastmod>2018-03-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://github.com/coblo/cips/cip-0004-smartlicense/</loc>
+     <lastmod>2018-03-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+</urlset>

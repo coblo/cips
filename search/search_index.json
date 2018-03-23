@@ -1,0 +1,184 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Content Blockchain Improvement Proposals\n\u00b6\n\n\nThis document is governed by the \n2/COSS\n (COSS).\n\n\n\n\n\n\n\n\nNumber\n\n\nTitle\n\n\nType\n\n\nStatus\n\n\n\n\n\n\n\n\n\n\n1\n\n\nWallet Address Aliases\n\n\nStream\n\n\n\n\n\n\n\n\n2\n\n\nContent Timestamping\n\n\nStream\n\n\n\n\n\n\n\n\n3\n\n\nISCC Registration\n\n\nStream\n\n\n\n\n\n\n\n\n4\n\n\nSmart Licenses\n\n\nStream",
+            "title": "Overview"
+        },
+        {
+            "location": "/#content-blockchain-improvement-proposals",
+            "text": "This document is governed by the  2/COSS  (COSS).     Number  Title  Type  Status      1  Wallet Address Aliases  Stream     2  Content Timestamping  Stream     3  ISCC Registration  Stream     4  Smart Licenses  Stream",
+            "title": "Content Blockchain Improvement Proposals"
+        },
+        {
+            "location": "/cip-0001-alias/",
+            "text": "Wallet Address Aliases\n\u00b6\n\n\nPurpose\n\u00b6\n\n\nWallet addresses are hard to memorize. This document specifies an open alias\nstream  named \nalias\n that can be used to register one human readable unique\nalias per address.\n\n\nSchema\n\u00b6\n\n\nThe alias-stream is readable and writable by every blockchain participant. An \nalias is registered as stream key in the alias-stream without any data. The \nwallet address of the alias is derived from the stream-item-publisher who \nsigned the publishing transaction.\n\n\nUpdating\n\u00b6\n\n\nA previously registered alias for an address can only be updated by the \noriginal registrant. This is done by publishing a new available alias as key \nto the alias-stream signed by the same publishers address. Updating an alias \nreleases the old alias for registration by other wallet addresses.\n\n\nRe-Assigning\n\u00b6\n\n\nAn alias can be re-assigned to a new address after the autoritative owner has \nreleased the alias by registering another alias to his address.\n\n\nValidation\n\u00b6\n\n\nThe first occurence of an unregistered or previously released alias is to be \ntreated as the authoritative entry.\n\n\nA valid alias stream entry has to have:\n\n\n\n\nat least one confirmation\n\n\nexactly one publisher\n\n\nemtpy data-hex\n\n\na key that is a a valid alias\n\n\na key that is not already assigned to another publisher (Wallet-ID)\n\n\n\n\nA valid alias must match the following regex:\n\n\n^                  # beginning of string\n(?!_$)             # no only _\n(?![-.])           # no - or . at the beginning\n(?!.*[_.-]{2})     # no __ or _. or ._ or .. or -- inside\n[a-z0-9_.-]{3,30}  # allowed characters (between 3 and 30)\n(?<![.-])          # no - or . at the end\n$                  # end of string\n\n\n\n\n\nAll stream items that are not conforming to these rules must be ignored by the \nstream parsing application. If a publisher announces a new alias the old \nbecomes available to be re-assigned. Applications must be aware of the fact \nthat address-alias mappings may change over time.",
+            "title": "CIP0001 - Wallet Address Aliases"
+        },
+        {
+            "location": "/cip-0001-alias/#wallet-address-aliases",
+            "text": "",
+            "title": "Wallet Address Aliases"
+        },
+        {
+            "location": "/cip-0001-alias/#purpose",
+            "text": "Wallet addresses are hard to memorize. This document specifies an open alias\nstream  named  alias  that can be used to register one human readable unique\nalias per address.",
+            "title": "Purpose"
+        },
+        {
+            "location": "/cip-0001-alias/#schema",
+            "text": "The alias-stream is readable and writable by every blockchain participant. An \nalias is registered as stream key in the alias-stream without any data. The \nwallet address of the alias is derived from the stream-item-publisher who \nsigned the publishing transaction.",
+            "title": "Schema"
+        },
+        {
+            "location": "/cip-0001-alias/#updating",
+            "text": "A previously registered alias for an address can only be updated by the \noriginal registrant. This is done by publishing a new available alias as key \nto the alias-stream signed by the same publishers address. Updating an alias \nreleases the old alias for registration by other wallet addresses.",
+            "title": "Updating"
+        },
+        {
+            "location": "/cip-0001-alias/#re-assigning",
+            "text": "An alias can be re-assigned to a new address after the autoritative owner has \nreleased the alias by registering another alias to his address.",
+            "title": "Re-Assigning"
+        },
+        {
+            "location": "/cip-0001-alias/#validation",
+            "text": "The first occurence of an unregistered or previously released alias is to be \ntreated as the authoritative entry.  A valid alias stream entry has to have:   at least one confirmation  exactly one publisher  emtpy data-hex  a key that is a a valid alias  a key that is not already assigned to another publisher (Wallet-ID)   A valid alias must match the following regex:  ^                  # beginning of string\n(?!_$)             # no only _\n(?![-.])           # no - or . at the beginning\n(?!.*[_.-]{2})     # no __ or _. or ._ or .. or -- inside\n[a-z0-9_.-]{3,30}  # allowed characters (between 3 and 30)\n(?<![.-])          # no - or . at the end\n$                  # end of string  All stream items that are not conforming to these rules must be ignored by the \nstream parsing application. If a publisher announces a new alias the old \nbecomes available to be re-assigned. Applications must be aware of the fact \nthat address-alias mappings may change over time.",
+            "title": "Validation"
+        },
+        {
+            "location": "/cip-0002-timestamp/",
+            "text": "Content Timestamping\n\u00b6\n\n\nPurpose\n\u00b6\n\n\nContent Timestamping is used to record a digital fingerprint of a document on \ndecentralized and tamper-proof blockchain. The timestamp serves as a secure \nproof of the time at which that document existed. It also secures the\nintegrity of the timestamped data without publicly revealing the content\nitself. Additionaly publisher of a timespamping transaction can prove control\nover the address that signed the transaction. This document speciefies an\nopen timestamping stream named \ntimestamp\n that can be used to publish\ndocument of file hashes as proof of existence.\n\n\nSchema\n\u00b6\n\n\nThe timestamp-stream is readable and writable by every blockchain participant.\nThe timestamp key must be published as a hex encoded sha256 hash of the data\nto be timestamped. The data_hex value is optional.\n\n\nIf data_hex is included it must be a \nUBJSON\n-encoded\ndata-mapping. Currently the only officially recognized key in that \ndatamapping is \ncomment\n which can be any comment about the timestamped \ndocument like document name, version or reason for timestamping. \nThe maximum processed length of \ncomment\n is 280 characters.",
+            "title": "CIP0002 - Content Timestamping"
+        },
+        {
+            "location": "/cip-0002-timestamp/#content-timestamping",
+            "text": "",
+            "title": "Content Timestamping"
+        },
+        {
+            "location": "/cip-0002-timestamp/#purpose",
+            "text": "Content Timestamping is used to record a digital fingerprint of a document on \ndecentralized and tamper-proof blockchain. The timestamp serves as a secure \nproof of the time at which that document existed. It also secures the\nintegrity of the timestamped data without publicly revealing the content\nitself. Additionaly publisher of a timespamping transaction can prove control\nover the address that signed the transaction. This document speciefies an\nopen timestamping stream named  timestamp  that can be used to publish\ndocument of file hashes as proof of existence.",
+            "title": "Purpose"
+        },
+        {
+            "location": "/cip-0002-timestamp/#schema",
+            "text": "The timestamp-stream is readable and writable by every blockchain participant.\nThe timestamp key must be published as a hex encoded sha256 hash of the data\nto be timestamped. The data_hex value is optional.  If data_hex is included it must be a  UBJSON -encoded\ndata-mapping. Currently the only officially recognized key in that \ndatamapping is  comment  which can be any comment about the timestamped \ndocument like document name, version or reason for timestamping. \nThe maximum processed length of  comment  is 280 characters.",
+            "title": "Schema"
+        },
+        {
+            "location": "/cip-0003-iscc/",
+            "text": "ISCC\n\u00b6\n\n\nPurpose\n\u00b6\n\n\nAn open an public registry for \nISCC\n content identifiers. This documents specifies an open stream named \niscc\n that can be used to register ISCC content codes and optionally associated metadata.\n\n\nSchema\n\u00b6\n\n\nThe ISCC-stream is named \niscc\n and is readable and writable by every blockchain participant. The stream uses multiple keys for each stream-item where each key represents one of the 4 ISCC components:\n\nMetaID\n, \nContentID\n, \nDataID\n,\nInstanceID\n.\n\n\nThe stream-item value must be a json object that supports a set of defined top-level fields which are specified below. Applications \nmay\n add custom fields at the top level but \nmust\n prefix those fields with an underscore to avoid collisions with future extensions of this specification. \n\n\nTop-Level Fields\n\u00b6\n\n\nversion (optional)\n\u00b6\n\n\nVersion of ISCC registry schema. Assumed to be 1.0 if omitted.\n\n\ntitle (required)\n\u00b6\n\n\nTitle of an intangible creation.\n\n\nThe UTF-8 encoded value of the \ntitle\n-field must not exceed 128 bytes. For a valid \nISCC\n entry the value of this field together with the optional \nextra\n-field must encode to the MetaID that was given as the first key of the stream-item.\n\n\nextra (optional)\n\u00b6\n\n\nA short statement that distinguishes this intangible creation from another one. \n\n\nThe UTF-8 encoded value of the \nextra\n-field must not exceed 128 bytes.\n\n\ntails (optional)\n\u00b6\n\n\nExtended ISCC-Component data.\n\n\nA JSON object with the following possible fields \nmeta\n, \ncontent\n, \ndata\n, \ninstance\n, where the values are 192-bit hex encoded ISCC component tails. At least one of the listed fields is required for a valid tails JSON object. Notes: ISCC components are assembled from a 1-byte header and an 8-byte main section. The main section is the truncated version of a 32-byte fingerprint. This field allows to supply the remaining 24-byte extended component data for advanced use cases that require higher dimensional binary vectors.\n\n\nmetadata (optional)\n\u00b6\n\n\nA list of one or more metadata entries. Must include at least one entry if specified. \n\n\nA metadata entry allows for a flexible and extendable way to supply additional industry specific metadata about the identified content. It is a JSON object with the fields \nschema\n, \nmediatype\n, \ndata\n, \nurl\n. The \nschema\n-field may indicate a well known metadata schema (such as Dublin Core, IPTC, ID3v2, ONIX) that is used. The \nmediatype\n-field specifies an \nIANA Media Type\n. The \ndata\n-field is only required if the\nurl\n field is omitted. It holds the metadata conforming to the indicated \nschema\n and \nmediatype.\n The \nurl\n-field is only required if the \ndata\n-field is omitted. The \nurl\n is an external link that is expected to host the metadata with the indicated \nschema\n and \nmediatype\n.  \n\n\nExamples\n\u00b6\n\n\nMinimal \nISCC\n registry entry value:\n\n\n{\n\n  \n\"title\"\n:\n \n\"The Neverending Story\"\n\n\n}\n\n\n\n\n\nWith extra field:\n\n\n{\n\n  \n\"title\"\n:\n \n\"The Neverending Story\"\n,\n\n  \n\"extra\"\n:\n \n\"1984 fantasy film based on novel\"\n\n\n}\n\n\n\n\n\nWith extended \nISCC\n tails:\n\n\n{\n\n  \n\"title\"\n:\n \n\"The Neverending Story\"\n,\n\n  \n\"tails\"\n:\n\n  \n{\n\n    \n\"meta\"\n:\n \n\"6e5ef0c142805ffc66c721394a66236b57aba8f9aee000dd\"\n,\n\n    \n\"content\"\n:\n \n\"5e3d5f623691d0e948cdc906f5c68602744934234fefdfa6\"\n,\n\n    \n\"data\"\n:\n \n\"c0b07d2bbcc2c6fb97739c24c7a65964c042808c3885bcd3\"\n,\n\n    \n\"instance\"\n:\n \n\"50859ea4550a2a27045c5c5dad39f8d198717486dc8fef79\"\n\n  \n}\n\n\n}\n\n\n\nWith linked Metadata:\n\n\n{\n\n  \n\"title\"\n:\n \n\"Ubu: A face-to-face connector app for Hubud members\"\n,\n\n  \n\"metadata\"\n:\n \n  \n[\n\n    \n{\n\n      \n\"schema\"\n:\n \n\"xmp\"\n,\n\n      \n\"mediatype\"\n:\n \n\"application/rdf+xml\"\n,\n\n      \n\"url\"\n:\n \n\"http://camwebb.info/blog/2014-11-19/ubu.xmp\"\n\n    \n}\n\n  \n]\n\n\n}\n\n\n\n\n\nWith custom inline Metadata:\n\n\n{\n\n  \n\"title\"\n:\n \n\"The Neverending Story\"\n,\n\n  \n\"metadata\"\n:\n \n  \n[{\n\n    \n\"schema\"\n:\n \n\"schema.org\"\n,\n\n    \n\"mediatype\"\n:\n \n\"application/ld+json\"\n,\n\n    \n\"data\"\n:\n \n      \n{\n\n        \n\"@context\"\n:\n \n\"http://schema.org\"\n,\n\n        \n\"@type\"\n:\n \n\"Movie\"\n,\n\n        \n\"name\"\n:\n \n\"The Neverending Story\"\n,\n\n        \n\"dateCreated\"\n:\n \n\"6 April, 1984\"\n,\n\n        \n\"director\"\n:\n \n\"Wolfgang Petersen\"\n,\n\n        \n\"actors\"\n:\n \n[\n\"Noah Hathaway\"\n,\n \n\"Barret Oliver\"\n,\n \n\"Tami Stronach\"\n],\n\n        \n\"duration\"\n:\n \n\"1:42:00\"\n\n      \n}\n\n  \n}]\n\n\n}\n\n\n\n\n\nWith application specific custom field:\n\n\n{\n\n  \n\"title\"\n:\n \n\"The Neverending Story\"\n,\n\n  \n\"_productionCompany\"\n:\n \n\"Bavaria Studios\"\n\n\n}",
+            "title": "CIP0003 - ISCC Registration"
+        },
+        {
+            "location": "/cip-0003-iscc/#iscc",
+            "text": "",
+            "title": "ISCC"
+        },
+        {
+            "location": "/cip-0003-iscc/#purpose",
+            "text": "An open an public registry for  ISCC  content identifiers. This documents specifies an open stream named  iscc  that can be used to register ISCC content codes and optionally associated metadata.",
+            "title": "Purpose"
+        },
+        {
+            "location": "/cip-0003-iscc/#schema",
+            "text": "The ISCC-stream is named  iscc  and is readable and writable by every blockchain participant. The stream uses multiple keys for each stream-item where each key represents one of the 4 ISCC components: MetaID ,  ContentID ,  DataID , InstanceID .  The stream-item value must be a json object that supports a set of defined top-level fields which are specified below. Applications  may  add custom fields at the top level but  must  prefix those fields with an underscore to avoid collisions with future extensions of this specification.",
+            "title": "Schema"
+        },
+        {
+            "location": "/cip-0003-iscc/#top-level-fields",
+            "text": "",
+            "title": "Top-Level Fields"
+        },
+        {
+            "location": "/cip-0003-iscc/#version-optional",
+            "text": "Version of ISCC registry schema. Assumed to be 1.0 if omitted.",
+            "title": "version (optional)"
+        },
+        {
+            "location": "/cip-0003-iscc/#title-required",
+            "text": "Title of an intangible creation.  The UTF-8 encoded value of the  title -field must not exceed 128 bytes. For a valid  ISCC  entry the value of this field together with the optional  extra -field must encode to the MetaID that was given as the first key of the stream-item.",
+            "title": "title (required)"
+        },
+        {
+            "location": "/cip-0003-iscc/#extra-optional",
+            "text": "A short statement that distinguishes this intangible creation from another one.   The UTF-8 encoded value of the  extra -field must not exceed 128 bytes.",
+            "title": "extra (optional)"
+        },
+        {
+            "location": "/cip-0003-iscc/#tails-optional",
+            "text": "Extended ISCC-Component data.  A JSON object with the following possible fields  meta ,  content ,  data ,  instance , where the values are 192-bit hex encoded ISCC component tails. At least one of the listed fields is required for a valid tails JSON object. Notes: ISCC components are assembled from a 1-byte header and an 8-byte main section. The main section is the truncated version of a 32-byte fingerprint. This field allows to supply the remaining 24-byte extended component data for advanced use cases that require higher dimensional binary vectors.",
+            "title": "tails (optional)"
+        },
+        {
+            "location": "/cip-0003-iscc/#metadata-optional",
+            "text": "A list of one or more metadata entries. Must include at least one entry if specified.   A metadata entry allows for a flexible and extendable way to supply additional industry specific metadata about the identified content. It is a JSON object with the fields  schema ,  mediatype ,  data ,  url . The  schema -field may indicate a well known metadata schema (such as Dublin Core, IPTC, ID3v2, ONIX) that is used. The  mediatype -field specifies an  IANA Media Type . The  data -field is only required if the url  field is omitted. It holds the metadata conforming to the indicated  schema  and  mediatype.  The  url -field is only required if the  data -field is omitted. The  url  is an external link that is expected to host the metadata with the indicated  schema  and  mediatype .",
+            "title": "metadata (optional)"
+        },
+        {
+            "location": "/cip-0003-iscc/#examples",
+            "text": "Minimal  ISCC  registry entry value:  { \n   \"title\" :   \"The Neverending Story\"  }   With extra field:  { \n   \"title\" :   \"The Neverending Story\" , \n   \"extra\" :   \"1984 fantasy film based on novel\"  }   With extended  ISCC  tails:  { \n   \"title\" :   \"The Neverending Story\" , \n   \"tails\" : \n   { \n     \"meta\" :   \"6e5ef0c142805ffc66c721394a66236b57aba8f9aee000dd\" , \n     \"content\" :   \"5e3d5f623691d0e948cdc906f5c68602744934234fefdfa6\" , \n     \"data\" :   \"c0b07d2bbcc2c6fb97739c24c7a65964c042808c3885bcd3\" , \n     \"instance\" :   \"50859ea4550a2a27045c5c5dad39f8d198717486dc8fef79\" \n   }  }  \nWith linked Metadata:  { \n   \"title\" :   \"Ubu: A face-to-face connector app for Hubud members\" , \n   \"metadata\" :  \n   [ \n     { \n       \"schema\" :   \"xmp\" , \n       \"mediatype\" :   \"application/rdf+xml\" , \n       \"url\" :   \"http://camwebb.info/blog/2014-11-19/ubu.xmp\" \n     } \n   ]  }   With custom inline Metadata:  { \n   \"title\" :   \"The Neverending Story\" , \n   \"metadata\" :  \n   [{ \n     \"schema\" :   \"schema.org\" , \n     \"mediatype\" :   \"application/ld+json\" , \n     \"data\" :  \n       { \n         \"@context\" :   \"http://schema.org\" , \n         \"@type\" :   \"Movie\" , \n         \"name\" :   \"The Neverending Story\" , \n         \"dateCreated\" :   \"6 April, 1984\" , \n         \"director\" :   \"Wolfgang Petersen\" , \n         \"actors\" :   [ \"Noah Hathaway\" ,   \"Barret Oliver\" ,   \"Tami Stronach\" ], \n         \"duration\" :   \"1:42:00\" \n       } \n   }]  }   With application specific custom field:  { \n   \"title\" :   \"The Neverending Story\" , \n   \"_productionCompany\" :   \"Bavaria Studios\"  }",
+            "title": "Examples"
+        },
+        {
+            "location": "/cip-0004-smartlicense/",
+            "text": "Smart Licenses\n\u00b6\n\n\nPurpose\n\u00b6\n\n\nAllow content owners to offer, sell and verify content lincenses via blockchain. \nThis document specifies multiple streams and the associated  data structures \nand transaction models that can be used to publish and verify  machine readable \nlicenses and contracting rules.\n\n\nSchema\n\u00b6\n\n\nThe SmartLicense protocol uses multiple streams. All streams are readable and \nwritable by every blockchain participant. A SmartLicense is identified by a \npublisher provided UUID Version 4. \nSee \nsmartlicense.proto\n for current state \nof data structure for SmartLicenses.\n\n\nStreams\n\u00b6\n\n\n\n\nsmartlicense\n: the primary stream to publish SmartLicenses\n\n\nsmartlicense-attestation\n: for publishing license attestations\n\n\n\n\nTransaction Models\n\u00b6\n\n\nAttestation Example\n\u00b6\n\n\nThis is an example that demostrates attestation based licensing process.\n\n\nCreating an attestion based SmartLicense\n\u00b6\n\n\nA publisher creates a SmartLicense with a frontend application. The \napplication then creates an encoded version of the data collected from the \nuser. A minimal JSON-encoded SmartLicense looks like this:\n\n\n{\n\n    \n\"materials\"\n:\n \n[\n\"2EvGugzdGh5Zp-2LpzWi7kt2kUA-2LpprH51GMPhq-2VhLRzBEdDLa4\"\n],\n\n    \n\"activation_modes\"\n:\n \n[\n\"ON_CHAIN_ATTESTATION\"\n]\n\n\n}\n\n\n\n\n\nIn this example the \nlicensors\n and the \npayment_address\n fields are not \nexplicitly specified. Both will be set  to the \nWallet-ID\n of the entity \nthat published the SmartLicense to the blockchain. The application also \ngenerates a \nUUID4\n as identifier for a specific SmartLicense. The \napplication publishes the SmartLicense as a multichain stream-item signed by \nthe publisher to the \nsmartlicense\n stream with the \nUUID4\n as key and the \nSmartLicense as data. The data is published in a compact binary encoding \n(protobuf).\n\n\nIssuing  a License to a user\n\u00b6\n\n\nThe publisher registers an entry in the  \nsmartlicense-attestation\n - stream \nwith the \nWallet-ID\n of the user as key and the \nSmartLicense UUID4\n as \ndata.\n\n\nVerifying a License for a user\n\u00b6\n\n\nGiven an ISCC content identifier:\n\n\n\n\nAsk the user to sign a random nonce with his Wallet-ID\n\n\nLookup the \nsmartlicense-attestation\n stream for SmartLicenses attested to \nthe user\n\n\n...\n\n\n\n\nOn-Chain Payment\n\u00b6\n\n\n...\n\n\nValidation\n\u00b6\n\n\nThe first time given UUID4 is published to the stream as an item-key it is \nconsidered to be owned by the publishing Wallet-ID(s). Subsequent stream\nentries with the same UUID4 key must be ignored if they are signed by a \ndifferent Wallet-ID.",
+            "title": "CIP0004 - Smart Licenses"
+        },
+        {
+            "location": "/cip-0004-smartlicense/#smart-licenses",
+            "text": "",
+            "title": "Smart Licenses"
+        },
+        {
+            "location": "/cip-0004-smartlicense/#purpose",
+            "text": "Allow content owners to offer, sell and verify content lincenses via blockchain. \nThis document specifies multiple streams and the associated  data structures \nand transaction models that can be used to publish and verify  machine readable \nlicenses and contracting rules.",
+            "title": "Purpose"
+        },
+        {
+            "location": "/cip-0004-smartlicense/#schema",
+            "text": "The SmartLicense protocol uses multiple streams. All streams are readable and \nwritable by every blockchain participant. A SmartLicense is identified by a \npublisher provided UUID Version 4. \nSee  smartlicense.proto  for current state \nof data structure for SmartLicenses.",
+            "title": "Schema"
+        },
+        {
+            "location": "/cip-0004-smartlicense/#streams",
+            "text": "smartlicense : the primary stream to publish SmartLicenses  smartlicense-attestation : for publishing license attestations",
+            "title": "Streams"
+        },
+        {
+            "location": "/cip-0004-smartlicense/#transaction-models",
+            "text": "",
+            "title": "Transaction Models"
+        },
+        {
+            "location": "/cip-0004-smartlicense/#attestation-example",
+            "text": "This is an example that demostrates attestation based licensing process.",
+            "title": "Attestation Example"
+        },
+        {
+            "location": "/cip-0004-smartlicense/#creating-an-attestion-based-smartlicense",
+            "text": "A publisher creates a SmartLicense with a frontend application. The \napplication then creates an encoded version of the data collected from the \nuser. A minimal JSON-encoded SmartLicense looks like this:  { \n     \"materials\" :   [ \"2EvGugzdGh5Zp-2LpzWi7kt2kUA-2LpprH51GMPhq-2VhLRzBEdDLa4\" ], \n     \"activation_modes\" :   [ \"ON_CHAIN_ATTESTATION\" ]  }   In this example the  licensors  and the  payment_address  fields are not \nexplicitly specified. Both will be set  to the  Wallet-ID  of the entity \nthat published the SmartLicense to the blockchain. The application also \ngenerates a  UUID4  as identifier for a specific SmartLicense. The \napplication publishes the SmartLicense as a multichain stream-item signed by \nthe publisher to the  smartlicense  stream with the  UUID4  as key and the \nSmartLicense as data. The data is published in a compact binary encoding \n(protobuf).",
+            "title": "Creating an attestion based SmartLicense"
+        },
+        {
+            "location": "/cip-0004-smartlicense/#issuing-a-license-to-a-user",
+            "text": "The publisher registers an entry in the   smartlicense-attestation  - stream \nwith the  Wallet-ID  of the user as key and the  SmartLicense UUID4  as \ndata.",
+            "title": "Issuing  a License to a user"
+        },
+        {
+            "location": "/cip-0004-smartlicense/#verifying-a-license-for-a-user",
+            "text": "Given an ISCC content identifier:   Ask the user to sign a random nonce with his Wallet-ID  Lookup the  smartlicense-attestation  stream for SmartLicenses attested to \nthe user  ...",
+            "title": "Verifying a License for a user"
+        },
+        {
+            "location": "/cip-0004-smartlicense/#on-chain-payment",
+            "text": "...",
+            "title": "On-Chain Payment"
+        },
+        {
+            "location": "/cip-0004-smartlicense/#validation",
+            "text": "The first time given UUID4 is published to the stream as an item-key it is \nconsidered to be owned by the publishing Wallet-ID(s). Subsequent stream\nentries with the same UUID4 key must be ignored if they are signed by a \ndifferent Wallet-ID.",
+            "title": "Validation"
+        }
+    ]
+}

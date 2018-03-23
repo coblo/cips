@@ -1,0 +1,670 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Content Blockchain Improvement Proposals">
+      
+      
+        <link rel="canonical" href="https://github.com/coblo/cips/cip-0004-smartlicense/">
+      
+      
+        <meta name="author" content="T">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.1">
+    
+    
+      
+        <title>Smart Licenses</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.78aab2dc.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.6079476c.css">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+      <link rel="stylesheet" href="../styles/cips.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="pink" data-md-color-accent="purple">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <a href="#smart-licenses" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://github.com/coblo/cips" title="Content Blockchain - CIPS" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Content Blockchain - CIPS
+              </span>
+              <span class="md-header-nav__topic">
+                CIP0004 - Smart Licenses
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/coblo/cips/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      coblo/cips
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </span>
+    Content Blockchain - CIPS
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/coblo/cips/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      coblo/cips
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../cip-0001-alias/" title="CIP0001 - Wallet Address Aliases" class="md-nav__link">
+      CIP0001 - Wallet Address Aliases
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../cip-0002-timestamp/" title="CIP0002 - Content Timestamping" class="md-nav__link">
+      CIP0002 - Content Timestamping
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../cip-0003-iscc/" title="CIP0003 - ISCC Registration" class="md-nav__link">
+      CIP0003 - ISCC Registration
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        CIP0004 - Smart Licenses
+      </label>
+    
+    <a href="./" title="CIP0004 - Smart Licenses" class="md-nav__link md-nav__link--active">
+      CIP0004 - Smart Licenses
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" title="Purpose" class="md-nav__link">
+    Purpose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema" title="Schema" class="md-nav__link">
+    Schema
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#streams" title="Streams" class="md-nav__link">
+    Streams
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transaction-models" title="Transaction Models" class="md-nav__link">
+    Transaction Models
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attestation-example" title="Attestation Example" class="md-nav__link">
+    Attestation Example
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-an-attestion-based-smartlicense" title="Creating an attestion based SmartLicense" class="md-nav__link">
+    Creating an attestion based SmartLicense
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issuing-a-license-to-a-user" title="Issuing  a License to a user" class="md-nav__link">
+    Issuing  a License to a user
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-a-license-for-a-user" title="Verifying a License for a user" class="md-nav__link">
+    Verifying a License for a user
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-chain-payment" title="On-Chain Payment" class="md-nav__link">
+    On-Chain Payment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" title="Validation" class="md-nav__link">
+    Validation
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" title="Purpose" class="md-nav__link">
+    Purpose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema" title="Schema" class="md-nav__link">
+    Schema
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#streams" title="Streams" class="md-nav__link">
+    Streams
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transaction-models" title="Transaction Models" class="md-nav__link">
+    Transaction Models
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attestation-example" title="Attestation Example" class="md-nav__link">
+    Attestation Example
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-an-attestion-based-smartlicense" title="Creating an attestion based SmartLicense" class="md-nav__link">
+    Creating an attestion based SmartLicense
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issuing-a-license-to-a-user" title="Issuing  a License to a user" class="md-nav__link">
+    Issuing  a License to a user
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-a-license-for-a-user" title="Verifying a License for a user" class="md-nav__link">
+    Verifying a License for a user
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-chain-payment" title="On-Chain Payment" class="md-nav__link">
+    On-Chain Payment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" title="Validation" class="md-nav__link">
+    Validation
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/coblo/cips/blob/master/cips/cip-0004-smartlicense.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="smart-licenses">Smart Licenses<a class="headerlink" href="#smart-licenses" title="Permanent link">&para;</a></h1>
+<h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
+<p>Allow content owners to offer, sell and verify content lincenses via blockchain. 
+This document specifies multiple streams and the associated  data structures 
+and transaction models that can be used to publish and verify  machine readable 
+licenses and contracting rules.</p>
+<h2 id="schema">Schema<a class="headerlink" href="#schema" title="Permanent link">&para;</a></h2>
+<p>The SmartLicense protocol uses multiple streams. All streams are readable and 
+writable by every blockchain participant. A SmartLicense is identified by a 
+publisher provided UUID Version 4. 
+See <a href="../../smartlicense/smartlicense.proto">smartlicense.proto</a> for current state 
+of data structure for SmartLicenses.</p>
+<h2 id="streams">Streams<a class="headerlink" href="#streams" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>smartlicense</code>: the primary stream to publish SmartLicenses</li>
+<li><code>smartlicense-attestation</code>: for publishing license attestations</li>
+</ul>
+<h2 id="transaction-models">Transaction Models<a class="headerlink" href="#transaction-models" title="Permanent link">&para;</a></h2>
+<h3 id="attestation-example">Attestation Example<a class="headerlink" href="#attestation-example" title="Permanent link">&para;</a></h3>
+<p>This is an example that demostrates attestation based licensing process.</p>
+<h4 id="creating-an-attestion-based-smartlicense">Creating an attestion based SmartLicense<a class="headerlink" href="#creating-an-attestion-based-smartlicense" title="Permanent link">&para;</a></h4>
+<p>A publisher creates a SmartLicense with a frontend application. The 
+application then creates an encoded version of the data collected from the 
+user. A minimal JSON-encoded SmartLicense looks like this:</p>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;materials&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2EvGugzdGh5Zp-2LpzWi7kt2kUA-2LpprH51GMPhq-2VhLRzBEdDLa4&quot;</span><span class="p">],</span>
+    <span class="nt">&quot;activation_modes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ON_CHAIN_ATTESTATION&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>In this example the <code>licensors</code> and the <code>payment_address</code> fields are not 
+explicitly specified. Both will be set  to the <strong>Wallet-ID</strong> of the entity 
+that published the SmartLicense to the blockchain. The application also 
+generates a <strong>UUID4</strong> as identifier for a specific SmartLicense. The 
+application publishes the SmartLicense as a multichain stream-item signed by 
+the publisher to the <code>smartlicense</code> stream with the <strong>UUID4</strong> as key and the 
+SmartLicense as data. The data is published in a compact binary encoding 
+(protobuf).</p>
+<h4 id="issuing-a-license-to-a-user">Issuing  a License to a user<a class="headerlink" href="#issuing-a-license-to-a-user" title="Permanent link">&para;</a></h4>
+<p>The publisher registers an entry in the  <code>smartlicense-attestation</code> - stream 
+with the <strong>Wallet-ID</strong> of the user as key and the <strong>SmartLicense UUID4</strong> as 
+data.</p>
+<h4 id="verifying-a-license-for-a-user">Verifying a License for a user<a class="headerlink" href="#verifying-a-license-for-a-user" title="Permanent link">&para;</a></h4>
+<p>Given an ISCC content identifier:</p>
+<ul>
+<li>Ask the user to sign a random nonce with his Wallet-ID</li>
+<li>Lookup the <code>smartlicense-attestation</code> stream for SmartLicenses attested to 
+the user</li>
+<li>...</li>
+</ul>
+<h3 id="on-chain-payment">On-Chain Payment<a class="headerlink" href="#on-chain-payment" title="Permanent link">&para;</a></h3>
+<p>...</p>
+<h2 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h2>
+<p>The first time given UUID4 is published to the stream as an item-key it is 
+considered to be owned by the publishing Wallet-ID(s). Subsequent stream
+entries with the same UUID4 key must be ignored if they are signed by a 
+different Wallet-ID.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../cip-0003-iscc/" title="CIP0003 - ISCC Registration" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                CIP0003 - ISCC Registration
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2017 - 2018 Content Blockchain Project
+          </div>
+        
+        powered by
+        <a href="http://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <a href="https://github.com/coblo" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.8eb9be28.js"></script>
+      
+      <script>app.initialize({version:"0.17.3",url:{base:".."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
