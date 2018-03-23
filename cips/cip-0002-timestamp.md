@@ -26,7 +26,7 @@ The timestamp-stream is readable and writable by every blockchain participant.
 The timestamp key must be published as a hex encoded sha256 hash of the data
 to be timestamped. The data_hex value is optional.
 
-If data_hex is included it must be a (UBJSON)[http://ubjson.org/]-encoded
+If data_hex is included it must be a [UBJSON](http://ubjson.org/)-encoded
 data-mapping. Currently the only officially recognized key in that 
 datamapping is `comment` which can be any comment about the timestamped 
 document like document name, version or reason for timestamping. 

@@ -1,0 +1,72 @@
+# Project information
+site_name: 'Content Blockchain - CIPS'
+site_description: 'Content Blockchain Improvement Proposals'
+site_author: 'The Content Blockchain Community'
+site_url: 'https://github.com/coblo/cips'
+
+# Repository
+repo_name: 'coblo/cips'
+repo_url: 'https://github.com/coblo/cips'
+edit_uri: 'blob/master/cips/'
+
+# Copyright
+copyright: 'Copyright &copy; 2017 - 2018 Content Blockchain Project'
+
+# Configuration
+theme:
+  name: 'material'
+  language: 'en'
+  palette:
+    primary: 'pink'
+    accent: 'purple'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+
+# Customization
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/coblo'
+extra_css:
+  - 'styles/cips.css'
+
+# Extensions
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+
+# Page tree
+pages:
+  - 'Overview': 'index.md'
+  - 'CIP0001 - Wallet Address Aliases': 'cip-0001-alias.md'
+  - 'CIP0002 - Content Timestamping': 'cip-0002-timestamp.md'
+  - 'CIP0003 - ISCC Registration': 'cip-0003-iscc.md'
+  - 'CIP0004 - Smart Licenses': 'cip-0004-smartlicense.md'
+
+docs_dir: 'cips'
+dev_addr: '127.0.0.1:8001'
