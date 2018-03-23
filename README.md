@@ -12,10 +12,12 @@ CIPs are governed by the [2/COSS](https://rfc.unprotocols.org/spec:2/COSS/)
 
 ## Working on CIPs
 
-All **CIPs** are written in [markdown](https://en.wikipedia.org/wiki/Markdown).
-The markdown content is than  built and published with the 
-[mkdocs](http://www.mkdocs.org/) documetation tool. If you have some basic 
-command line skills you can build and run the 
+All **CIPs** are written in [markdown](https://en.wikipedia.org/wiki/Markdown)
+and managed by the community via github version control in the 
+[CIPS repository](https://github.com/coblo/cips). The markdown content is than 
+built and published by the maintainers with [mkdocs](http://www.mkdocs.org/).
+
+If you have some basic command line skills you can build and run the 
 [cips website](https://coblo.github.io/cips/) on your own computer. Make sure 
 you have the [Git](https://git-scm.com/) and [Python](https://www.python.org/) 
 installed on your system and  follow these steps on the command line:
