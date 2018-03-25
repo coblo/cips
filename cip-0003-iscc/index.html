@@ -351,8 +351,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#hash-optional" title="hash (optional)" class="md-nav__link">
-    hash (optional)
+  <a href="#tophash-optional" title="tophash (optional)" class="md-nav__link">
+    tophash (optional)
   </a>
   
 </li>
@@ -469,8 +469,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#hash-optional" title="hash (optional)" class="md-nav__link">
-    hash (optional)
+  <a href="#tophash-optional" title="tophash (optional)" class="md-nav__link">
+    tophash (optional)
   </a>
   
 </li>
@@ -575,8 +575,8 @@ stream-item.</p>
 <h4 id="extra-optional">extra (optional)<a class="headerlink" href="#extra-optional" title="Permanent link">&para;</a></h4>
 <p>A short statement that distinguishes this intangible creation from another one. </p>
 <p>The UTF-8 encoded value of the <code>extra</code>-field must not exceed 128 bytes.</p>
-<h4 id="hash-optional">hash (optional)<a class="headerlink" href="#hash-optional" title="Permanent link">&para;</a></h4>
-<p>The full 64 character hex-encoded top-hash (merkle root) retuned by the 
+<h4 id="tophash-optional"><abbr title="Root hash of an Instance-ID hash-tree">tophash</abbr> (optional)<a class="headerlink" href="#tophash-optional" title="Permanent link">&para;</a></h4>
+<p>The full 64 character hex-encoded <abbr title="Root hash of an Instance-ID hash-tree">tophash</abbr> (merkle root) retuned by the 
 instance_id function.</p>
 <h4 id="meta-optional">meta (optional)<a class="headerlink" href="#meta-optional" title="Permanent link">&para;</a></h4>
 <p>A list of one or more metadata entries. Must include at least one entry if 
@@ -609,7 +609,7 @@ that is expected to host the metadata with the indicated <code>schema</code> and
 <p>With <strong>ISCC</strong> data integrity hash:</p>
 <p><div class="codehilite"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;The Neverending Story&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;40aeb0ef856a8dbfa4e9897de98b1a1eef7e24f8744e65cd33118b40d9741147&quot;</span>
+  <span class="nt">&quot;tophash&quot;</span><span class="p">:</span> <span class="s2">&quot;40aeb0ef856a8dbfa4e9897de98b1a1eef7e24f8744e65cd33118b40d9741147&quot;</span>
 <span class="p">}</span>
 </pre></div>
 With linked Metadata:</p>
