@@ -48,9 +48,9 @@ A short statement that distinguishes this intangible creation from another one.
 
 The UTF-8 encoded value of the `extra`-field must not exceed 128 bytes.
 
-#### hash (optional)
+#### tophash (optional)
 
-The full 64 character hex-encoded top-hash (merkle root) retuned by the 
+The full 64 character hex-encoded tophash (merkle root) retuned by the 
 instance_id function.
 
 #### meta (optional)
@@ -94,7 +94,7 @@ With **ISCC** data integrity hash:
 ```json
 {
   "title": "The Neverending Story",
-  "hash": "40aeb0ef856a8dbfa4e9897de98b1a1eef7e24f8744e65cd33118b40d9741147"
+  "tophash": "40aeb0ef856a8dbfa4e9897de98b1a1eef7e24f8744e65cd33118b40d9741147"
 }
 ```
 With linked Metadata:
@@ -144,3 +144,5 @@ With application specific custom field:
   "_productionCompany": "Bavaria Studios"
 }
 ```
+
+*[tophash]: Root hash of an Instance-ID hash-tree
