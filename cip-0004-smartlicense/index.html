@@ -423,6 +423,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#overview" title="OVerview" class="md-nav__link">
+    OVerview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#smart-license" title="Smart License" class="md-nav__link">
     Smart License
   </a>
@@ -688,6 +695,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#overview" title="OVerview" class="md-nav__link">
+    OVerview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#smart-license" title="Smart License" class="md-nav__link">
     Smart License
   </a>
@@ -903,29 +917,29 @@ private key can be used to prove licence ownership.</dd>
 </dl>
 <h3 id="rights-modules">Rights Modules<a class="headerlink" href="#rights-modules" title="Permanent link">&para;</a></h3>
 <dl>
-<dt>Adapt:</dt>
+<dt>Adapt (AD):</dt>
 <dd>Modify, alter or change the licensed material in any way (e.g. remixing, transforming, shortening, translating, synchronizing, combining with other material). Adaptations may also be shared.</dd>
 <dt>Lend:</dt>
 <dd>The temporary surrender of the licensed material to another person or entity without compensation. </dd>
-<dt>Resale:</dt>
+<dt>Resale (RS):</dt>
 <dd>Copy the <strong>licensed material</strong> in any medium or format (digital, analogue, tangible, intangible). Making available or distribute the material is not subject of <strong>reproduce</strong> but <strong>share</strong>.</dd>
-<dt>share:</dt>
+<dt>Share (SH):</dt>
 <dd>Make the <strong>licensed material</strong> accessible to third parties in digital form. Share means e.g. to publicly display, perform or present the material, to broadcast, stream or make it online available. In case these uses require copying the material the necessary <strong>reproductions</strong> are covered, too. </dd>
-<dt>distribute:</dt>
+<dt>Distribute:</dt>
 <dd>“<strong>Distribute</strong>” means to make physical reproductions of the <strong>licensed material</strong> (like printing a text or burning a CD) and to convey the copies to third parties. The offer to convey copies is a distribution, too.</dd>
-<dt>rent:</dt>
+<dt>Rent:</dt>
 <dd>“<strong>Rent</strong>” is the temporary surrender of the licensed material to another person or entity for compensation.</dd>
 </dl>
 <h3 id="restrictions">Restrictions<a class="headerlink" href="#restrictions" title="Permanent link">&para;</a></h3>
 <dl>
-<dt>Non-commercial:</dt>
+<dt>Non-commercial (NC):</dt>
 <dd>“<strong>Non-commercial</strong>” means not primarily intended for or directed towards commercial advantage or monetary compensation. For purposes of this smart license, the <strong>resale</strong> of the <strong>licensed material</strong> is non-commercial.</dd>
-<dt>No Industrial Property Rights:</dt>
+<dt>No Industrial Property Rights (NI):</dt>
 <dd>Patent and trademark rights are not licensed under this <strong>smart license</strong>.</dd>
 </dl>
 <h3 id="obligations">Obligations<a class="headerlink" href="#obligations" title="Permanent link">&para;</a></h3>
 <dl>
-<dt>Attribution:</dt>
+<dt>Attribution (AT):</dt>
 <dd>
 <p>You have to pertain notices that are supplied with the <strong>licensed material</strong> when you <strong>share</strong> or <strong>distribute</strong> it. Under this obligation you have to:</p>
 <ul>
@@ -936,7 +950,7 @@ private key can be used to prove licence ownership.</dd>
 </dd>
 <dt>Fair Share:</dt>
 <dd>If you sell your <strong>smart license</strong> a part of your sales revenue will be shared with the licensor. The licensor will provide information about the share ratio and other details ...</dd>
-<dt>indicate adaptations:</dt>
+<dt>Indicate Adaptations (IA):</dt>
 <dd>If you share an adapted version of the <strong>licensed material</strong> you have to indicate that your <strong>adaptation</strong> bases on the <strong>licensed material</strong> in a reasonable manner. You have to name the <strong>creator</strong>, copyright owner and <strong>licensor</strong> of the material according to the <strong>attribution</strong> obligation. If  you share <strong>adaptations</strong> you must not imply that they are authorised or otherwise endorsed by the <strong>licensor</strong>.</dd>
 </dl>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
@@ -958,12 +972,12 @@ with an overly flexible model.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <p><strong>STREAM-KEYS</strong>: ["ATT", "dac9a2f5-8bfc-4f20-b665-42e1606812ac"]</p>
-<p><strong>STREAM-DATA</strong>:
-​<code>json
-{&quot;json&quot;:
+<p><strong>STREAM-DATA</strong>:  </p>
+<div class="codehilite"><pre><span></span>{&quot;json&quot;:
   {&quot;licensee&quot;: &quot;2QTa5N4aeSrCB2MLoPdPF4AsTjstJgcLTnd&quot;}
 }
-​</code></p>
+</pre></div>
+
 </div>
 <h3 id="chain-payment">Chain Payment<a class="headerlink" href="#chain-payment" title="Permanent link">&para;</a></h3>
 <p>Dictates that a license contract becomes effective between Licensor and Licensee when an on-chain payment of amount <strong>price x</strong> from the licensees Wallet-ID to <strong>payment_address y</strong> has been confirmed on the blockchain.</p>
@@ -971,12 +985,14 @@ with an overly flexible model.</p>
 <h3 id="chain-tokenization">Chain tokenization<a class="headerlink" href="#chain-tokenization" title="Permanent link">&para;</a></h3>
 <p>A <strong>Smart License</strong> that specifies <code>CHAIN_TOKENIZATION</code> as one of its allowable <strong>Transaction Models</strong> must issue a token that securitizes the formation of a contract between the licensor and the token holder. This effectively means whoever holds such token is automatically a licensee of the Smart License that is bound to the token. The token MUST be issued with the same UUID4 as the Smart License itself but without hyphens. The smallest unit of the token MUST be <code>1</code>. The token MAY be open or closed (Limited Edition) for re-issue. The token issue transaction must contain the custom fields <code>info</code> and <code>type</code>.  <code>info</code> should be a short  description about the Smart License. <code>type</code> must be set to <code>smart-license</code>.</p>
 <h2 id="data-model">Data Model<a class="headerlink" href="#data-model" title="Permanent link">&para;</a></h2>
+<h3 id="overview">OVerview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
+<p><img alt="smartlicense-anatomy" src="../images/smartlicense-anatomy.svg" /></p>
 <h3 id="smart-license">Smart License<a class="headerlink" href="#smart-license" title="Permanent link">&para;</a></h3>
 <p>A <strong>Smart License</strong> is published as a JSON object to the <strong>smart-license</strong> stream on the Content Blockchain. The primary key for the stream-item is a self generated UUID4.</p>
 <p>The <strong>ISCC codes</strong> of the licensed materials MUST be used as secondary keys of the stream-item. </p>
 <p>By default the <strong>Wallet-ID</strong> of the transaction that publishes the stream-item (the stream-item publisher) is assumed to be the <strong>Licensor</strong> of the referenced content and also the recipient (payment address) of any on-chain payments that the Smart License defines as acceptable. Both assumptions MAY be overridden by the contents of the Smart License json object. Future Smart License versions might allow for multisig stream-items. Until then multisig-stream items are to be treated as invalid by applications.</p>
 <p>Alternatively a Smart License may be published to privately controlled streams that are Smart License compatible. A list of Smart License compatible streams will be published and maintained by a community of elected users with write permissions to the closed <code>smart-license-streams</code> stream.</p>
-<p><strong>A Smart License supports the following json object fields:</strong></p>
+<p><strong>A Smart License supports the following JSON object fields:</strong></p>
 <h4 id="version-optional">version (optional)<a class="headerlink" href="#version-optional" title="Permanent link">&para;</a></h4>
 <p>Version number of Smart License specification. Assumed to be 1 if the field is empty or omitted.</p>
 <h4 id="template-required">template (required)<a class="headerlink" href="#template-required" title="Permanent link">&para;</a></h4>
