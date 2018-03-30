@@ -61,36 +61,36 @@ private key can be used to prove licence ownership.
 
 ### Rights Modules
 
-Adapt:
+Adapt (AD):
 :    Modify, alter or change the licensed material in any way (e.g. remixing, transforming, shortening, translating, synchronizing, combining with other material). Adaptations may also be shared.
 
 Lend:
 :    The temporary surrender of the licensed material to another person or entity without compensation. 
 
-Resale:
+Resale (RS):
 :    Copy the **licensed material** in any medium or format (digital, analogue, tangible, intangible). Making available or distribute the material is not subject of **reproduce** but **share**.
 
-share:
+Share (SH):
 :    Make the **licensed material** accessible to third parties in digital form. Share means e.g. to publicly display, perform or present the material, to broadcast, stream or make it online available. In case these uses require copying the material the necessary **reproductions** are covered, too. 
 
 
-distribute:
+Distribute:
 :    “**Distribute**” means to make physical reproductions of the **licensed material** (like printing a text or burning a CD) and to convey the copies to third parties. The offer to convey copies is a distribution, too.
 
-rent:
+Rent:
 :    “**Rent**” is the temporary surrender of the licensed material to another person or entity for compensation.
 
 ### Restrictions
 
-Non-commercial:
+Non-commercial (NC):
 :    “**Non-commercial**” means not primarily intended for or directed towards commercial advantage or monetary compensation. For purposes of this smart license, the **resale** of the **licensed material** is non-commercial.
 
-No Industrial Property Rights:
+No Industrial Property Rights (NI):
 :    Patent and trademark rights are not licensed under this **smart license**.
 
 ### Obligations
 
-Attribution:
+Attribution (AT):
 :    You have to pertain notices that are supplied with the **licensed material** when you **share** or **distribute** it. Under this obligation you have to:
 
     - Retain credits to the creator and/or the publisher;  
@@ -100,7 +100,7 @@ Attribution:
 Fair Share:
 :    If you sell your **smart license** a part of your sales revenue will be shared with the licensor. The licensor will provide information about the share ratio and other details ...
 
-indicate adaptations:
+Indicate Adaptations (IA):
 :    If you share an adapted version of the **licensed material** you have to indicate that your **adaptation** bases on the **licensed material** in a reasonable manner. You have to name the **creator**, copyright owner and **licensor** of the material according to the **attribution** obligation. If  you share **adaptations** you must not imply that they are authorised or otherwise endorsed by the **licensor**.
 
 ## Introduction
@@ -129,14 +129,17 @@ Dictates that a license contract becomes effective between Licensor and Licensee
 A **Smart License** that specifies `CHAIN_ATTESTATION` as one of its allowable **Transaction Models** can be triggered by the publisher of the **Smart License** independent of a price or payment method. The **Licensor** does this by attesting to the license grant with an on-chain entry to the data-stream `smart-license`. The stream-item is marked as an attestation by providing `ATT` as the first stream-key. The corresponding Smart License is referenced by the second key, which must be a UUID4. The Licensee is referenced by Wallet-ID in the stream data  json field `licensee` that may contain a single Walled-ID or an array of Walled-IDs. 
 
 !!! example
+    
     **STREAM-KEYS**: ["ATT", "dac9a2f5-8bfc-4f20-b665-42e1606812ac"]
     
-    **STREAM-DATA**:
-    ​```json
+    **STREAM-DATA**:  
+    
+    ```
     {"json":
       {"licensee": "2QTa5N4aeSrCB2MLoPdPF4AsTjstJgcLTnd"}
     }
-    ​```
+    ```
+
 
 ### Chain Payment
 
@@ -150,6 +153,10 @@ A **Smart License** that specifies `CHAIN_TOKENIZATION` as one of its allowable 
 
 ## Data Model
 
+### OVerview
+
+![smartlicense-anatomy](images/smartlicense-anatomy.svg)
+
 ### Smart License
 
 A **Smart License** is published as a JSON object to the **smart-license** stream on the Content Blockchain. The primary key for the stream-item is a self generated UUID4.
@@ -160,7 +167,7 @@ By default the **Wallet-ID** of the transaction that publishes the stream-item (
 
 Alternatively a Smart License may be published to privately controlled streams that are Smart License compatible. A list of Smart License compatible streams will be published and maintained by a community of elected users with write permissions to the closed `smart-license-streams` stream.
 
-**A Smart License supports the following json object fields:**
+**A Smart License supports the following JSON object fields:**
 
 #### version (optional)
 
