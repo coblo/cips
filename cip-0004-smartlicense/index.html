@@ -101,7 +101,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#smart-licenses-v099" tabindex="1" class="md-skip">
+      <a href="#smart-licenses-v100" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -403,8 +403,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#chain-tokenization" title="Chain tokenization" class="md-nav__link">
-    Chain tokenization
+  <a href="#chain-tokenization" title="Chain Tokenization" class="md-nav__link">
+    Chain Tokenization
   </a>
   
 </li>
@@ -423,8 +423,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#overview" title="OVerview" class="md-nav__link">
-    OVerview
+  <a href="#overview" title="Overview" class="md-nav__link">
+    Overview
   </a>
   
 </li>
@@ -675,8 +675,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#chain-tokenization" title="Chain tokenization" class="md-nav__link">
-    Chain tokenization
+  <a href="#chain-tokenization" title="Chain Tokenization" class="md-nav__link">
+    Chain Tokenization
   </a>
   
 </li>
@@ -695,8 +695,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#overview" title="OVerview" class="md-nav__link">
-    OVerview
+  <a href="#overview" title="Overview" class="md-nav__link">
+    Overview
   </a>
   
 </li>
@@ -850,7 +850,7 @@
                   <a href="https://github.com/coblo/cips/blob/master/cips/cip-0004-smartlicense.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="smart-licenses-v099">Smart Licenses v.0.9.9<a class="headerlink" href="#smart-licenses-v099" title="Permanent link">&para;</a></h1>
+                <h1 id="smart-licenses-v100">Smart Licenses v.1.0.0<a class="headerlink" href="#smart-licenses-v100" title="Permanent link">&para;</a></h1>
 <table>
 <thead>
 <tr>
@@ -869,7 +869,7 @@
 </tr>
 <tr>
 <td>Status:</td>
-<td><img alt="Raw" src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" /></td>
+<td><img alt="Draft" src="http://rfc.unprotocols.org/spec:2/COSS/draft.svg" /></td>
 </tr>
 <tr>
 <td>Created:</td>
@@ -973,24 +973,27 @@ with an overly flexible model.</p>
 <p class="admonition-title">Example</p>
 <p><strong>STREAM-KEYS</strong>: ["ATT", "dac9a2f5-8bfc-4f20-b665-42e1606812ac"]</p>
 <p><strong>STREAM-DATA</strong>:  </p>
-<div class="codehilite"><pre><span></span>{&quot;json&quot;:
+<p>​<code>{&quot;json&quot;:
   {&quot;licensee&quot;: &quot;2QTa5N4aeSrCB2MLoPdPF4AsTjstJgcLTnd&quot;}
 }
-</pre></div>
-
+​</code></p>
 </div>
 <h3 id="chain-payment">Chain Payment<a class="headerlink" href="#chain-payment" title="Permanent link">&para;</a></h3>
 <p>Dictates that a license contract becomes effective between Licensor and Licensee when an on-chain payment of amount <strong>price x</strong> from the licensees Wallet-ID to <strong>payment_address y</strong> has been confirmed on the blockchain.</p>
 <p>A <strong>Smart License</strong> that specifies <code>CHAIN_PAYMENT</code> as one of its allowable <strong>Transaction Models</strong> must also specify a price in one or multiple on-chain currencies (native or token) that are accepted as a payment that triggers the verifiable formation of a <strong>Smart License Contract</strong>.</p>
-<h3 id="chain-tokenization">Chain tokenization<a class="headerlink" href="#chain-tokenization" title="Permanent link">&para;</a></h3>
+<h3 id="chain-tokenization">Chain Tokenization<a class="headerlink" href="#chain-tokenization" title="Permanent link">&para;</a></h3>
 <p>A <strong>Smart License</strong> that specifies <code>CHAIN_TOKENIZATION</code> as one of its allowable <strong>Transaction Models</strong> must issue a token that securitizes the formation of a contract between the licensor and the token holder. This effectively means whoever holds such token is automatically a licensee of the Smart License that is bound to the token. The token MUST be issued with the same UUID4 as the Smart License itself but without hyphens. The smallest unit of the token MUST be <code>1</code>. The token MAY be open or closed (Limited Edition) for re-issue. The token issue transaction must contain the custom fields <code>info</code> and <code>type</code>.  <code>info</code> should be a short  description about the Smart License. <code>type</code> must be set to <code>smart-license</code>.</p>
 <h2 id="data-model">Data Model<a class="headerlink" href="#data-model" title="Permanent link">&para;</a></h2>
-<h3 id="overview">OVerview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
+<h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
 <p><img alt="smartlicense-anatomy" src="../images/smartlicense-anatomy.svg" /></p>
 <h3 id="smart-license">Smart License<a class="headerlink" href="#smart-license" title="Permanent link">&para;</a></h3>
 <p>A <strong>Smart License</strong> is published as a JSON object to the <strong>smart-license</strong> stream on the Content Blockchain. The primary key for the stream-item is a self generated UUID4.</p>
-<p>The <strong>ISCC codes</strong> of the licensed materials MUST be used as secondary keys of the stream-item. </p>
-<p>By default the <strong>Wallet-ID</strong> of the transaction that publishes the stream-item (the stream-item publisher) is assumed to be the <strong>Licensor</strong> of the referenced content and also the recipient (payment address) of any on-chain payments that the Smart License defines as acceptable. Both assumptions MAY be overridden by the contents of the Smart License json object. Future Smart License versions might allow for multisig stream-items. Until then multisig-stream items are to be treated as invalid by applications.</p>
+<p>The <strong>ISCC codes</strong> of the licensed materials SHOULD be used as secondary keys of the stream-item. </p>
+<p>By default the <strong>Wallet-ID</strong> of the transaction that publishes the stream-item (the stream-item publisher) is assumed to be the <strong>Licensor</strong> of the referenced content and also the recipient (payment address) of any on-chain payments that the Smart License defines as acceptable. Both assumptions MAY be overridden by the contents of the Smart License json object. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Future Smart License versions might allow for multisig stream-items. Until then multisig-stream items are to be treated as invalid by applications.</p>
+</div>
 <p>Alternatively a Smart License may be published to privately controlled streams that are Smart License compatible. A list of Smart License compatible streams will be published and maintained by a community of elected users with write permissions to the closed <code>smart-license-streams</code> stream.</p>
 <p><strong>A Smart License supports the following JSON object fields:</strong></p>
 <h4 id="version-optional">version (optional)<a class="headerlink" href="#version-optional" title="Permanent link">&para;</a></h4>
@@ -1002,7 +1005,8 @@ with an overly flexible model.</p>
 <p>The template engine used to render the human readable contract. If empty or omitted it is assumed to be Jinja2 v. 2.10.</p>
 <h4 id="materials-optional">materials (optional)<a class="headerlink" href="#materials-optional" title="Permanent link">&para;</a></h4>
 <p>The licensed material(s) referenced by a list of one or multiple identifiers.</p>
-<p>If this field is empty or omitted the licensed material(s) are assumed to be referenced by the secondary keys of the Smart License stream-item. By default and for reasons of discoverability (stream indexing) and storage space efficiency the licensed materials SHOULD only be referenced by secondary keys of the stream-item. The default identifier type is an ISCC.</p>
+<p>If this field is empty or omitted the licensed material(s) are assumed to be referenced by the secondary keys of the Smart License stream-item. The default identifier type is an ISCC.</p>
+<p>By default and for reasons of discoverability (stream indexing) and storage space efficiency the licensed materials SHOULD only be referenced by secondary keys of the stream-item.</p>
 <p>This field allows the <strong>Smart License</strong> data model to work as a message outside of the context of a Content Blockchain stream-item. If this field is used, the secondary stream-item keys must either be non-existent or an exact match of those secondary keys. Any other combination must be treated as invalid.</p>
 <h4 id="material_ident_type-optional">material_ident_type (optional)<a class="headerlink" href="#material_ident_type-optional" title="Permanent link">&para;</a></h4>
 <p>The type of identifier used to reference the licensed material. Assumed to be an ISCC if this field is empty or omitted.</p>
@@ -1039,7 +1043,11 @@ able support features like:</p>
 <li>verify on the blockchain that the user has a valid license for the requested content.</li>
 <li>deliver/stream the content to the user.</li>
 </ul>
-<p>Ultimately the content delivery system behind the access url is application specific. In the future we might define a standard protocol for a content delivery system.</p>
+<p>Ultimately the content delivery system behind the access url is application specific. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Future versions of this CIP might define a standard protocol for a content delivery system.</p>
+</div>
 <h2 id="governance">Governance<a class="headerlink" href="#governance" title="Permanent link">&para;</a></h2>
 <p>The act of publishing a <strong>Smart License</strong> is implicitly also an <strong>unverified</strong> claim of ownership or re-licensing rights by the publishing entity for the respective content. The publishing entity can present cryptographic proof of being the source of a given <strong>Smart License</strong> on the blockchain and can also create a cryptographic Proof of Data Possession of the claimed content at the time of blockchain registration. It is important not to confuse this with a proof of authorship or intellectual property ownership of the referenced content (yes even blockchains can´t do that). This becomes less relevant In light of the fact, that the content itself is not stored on the blockchain and content access authorization is managed by blockchain-external applications that can define their own trust-rules. </p>
 <p>To further protect intellectual property rights and prevent abuse the <strong>Content Blockchain</strong> offers various features:</p>
@@ -1049,58 +1057,6 @@ able support features like:</p>
 <li>A community managed abuse stream.</li>
 <li>Possibility of reputational scoring based on chain history.</li>
 </ul>
-<h1 id="old-notes-to-reworked">OLD NOTEs (to reworked)<a class="headerlink" href="#old-notes-to-reworked" title="Permanent link">&para;</a></h1>
-<h2 id="schema">Schema<a class="headerlink" href="#schema" title="Permanent link">&para;</a></h2>
-<p>The SmartLicense protocol uses multiple streams. All streams are readable and 
-writable by every blockchain participant. A SmartLicense is identified by a 
-publisher provided UUID Version 4. 
-See <a href="../../smartlicense/smartlicense.proto">smartlicense.proto</a> for current state 
-of data structure for SmartLicenses.</p>
-<h2 id="streams">Streams<a class="headerlink" href="#streams" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>smartlicense</code>: the primary stream to publish SmartLicenses</li>
-<li><code>smartlicense-attestation</code>: for publishing license attestations</li>
-</ul>
-<h2 id="transaction-models_1">Transaction Models<a class="headerlink" href="#transaction-models_1" title="Permanent link">&para;</a></h2>
-<h3 id="attestation-example">Attestation Example<a class="headerlink" href="#attestation-example" title="Permanent link">&para;</a></h3>
-<p>This is an example that demostrates attestation based licensing process.</p>
-<h4 id="creating-an-attestion-based-smartlicense">Creating an attestion based SmartLicense<a class="headerlink" href="#creating-an-attestion-based-smartlicense" title="Permanent link">&para;</a></h4>
-<p>A publisher creates a SmartLicense with a frontend application. The 
-application then creates an encoded version of the data collected from the 
-user. A minimal JSON-encoded SmartLicense looks like this:</p>
-<div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;materials&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2EvGugzdGh5Zp-2LpzWi7kt2kUA-2LpprH51GMPhq-2VhLRzBEdDLa4&quot;</span><span class="p">],</span>
-    <span class="nt">&quot;activation_modes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ON_CHAIN_ATTESTATION&quot;</span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-
-<p>In this example the <code>licensors</code> and the <code>payment_address</code> fields are not 
-explicitly specified. Both will be set  to the <strong>Wallet-ID</strong> of the entity 
-that published the SmartLicense to the blockchain. The application also 
-generates a <strong>UUID4</strong> as identifier for a specific SmartLicense. The 
-application publishes the SmartLicense as a multichain stream-item signed by 
-the publisher to the <code>smartlicense</code> stream with the <strong>UUID4</strong> as key and the 
-SmartLicense as data. The data is published in a compact binary encoding 
-(protobuf).</p>
-<h4 id="issuing-a-license-to-a-user">Issuing  a License to a user<a class="headerlink" href="#issuing-a-license-to-a-user" title="Permanent link">&para;</a></h4>
-<p>The publisher registers an entry in the  <code>smartlicense-attestation</code> - stream 
-with the <strong>Wallet-ID</strong> of the user as key and the <strong>SmartLicense UUID4</strong> as 
-data.</p>
-<h4 id="verifying-a-license-for-a-user">Verifying a License for a user<a class="headerlink" href="#verifying-a-license-for-a-user" title="Permanent link">&para;</a></h4>
-<p>Given an ISCC content identifier:</p>
-<ul>
-<li>Ask the user to sign a random nonce with his Wallet-ID</li>
-<li>Lookup the <code>smartlicense-attestation</code> stream for SmartLicenses attested to 
-the user</li>
-<li>...</li>
-</ul>
-<h3 id="on-chain-payment">On-Chain Payment<a class="headerlink" href="#on-chain-payment" title="Permanent link">&para;</a></h3>
-<p>...</p>
-<h2 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h2>
-<p>The first time given UUID4 is published to the stream as an item-key it is 
-considered to be owned by the publishing Wallet-ID(s). Subsequent stream
-entries with the same UUID4 key must be ignored if they are signed by a 
-different Wallet-ID.</p>
                 
                   
                 
