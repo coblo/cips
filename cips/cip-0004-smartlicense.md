@@ -1,10 +1,10 @@
-# Smart Licenses v.0.9.9
+# Smart Licenses v.1.0.0
 
 | CIP:     | 0004                                                         |
 | -------- | ------------------------------------------------------------ |
 | Title:   | Smart Licenses                                               |
 | Authors: | Till Kreutzer, Sebastian Posth, Titusz Pan                   |
-| Status:  | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)       |
+| Status:  | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg)   |
 | Created: | 2018-01-12                                                   |
 | License: | [CC0 - Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 
@@ -134,12 +134,11 @@ A **Smart License** that specifies `CHAIN_ATTESTATION` as one of its allowable *
     
     **STREAM-DATA**:  
     
-    ```
+    ​```
     {"json":
       {"licensee": "2QTa5N4aeSrCB2MLoPdPF4AsTjstJgcLTnd"}
     }
-    ```
-
+    ​```
 
 ### Chain Payment
 
@@ -147,13 +146,13 @@ Dictates that a license contract becomes effective between Licensor and Licensee
 
 A **Smart License** that specifies `CHAIN_PAYMENT` as one of its allowable **Transaction Models** must also specify a price in one or multiple on-chain currencies (native or token) that are accepted as a payment that triggers the verifiable formation of a **Smart License Contract**.
 
-### Chain tokenization
+### Chain Tokenization
 
 A **Smart License** that specifies `CHAIN_TOKENIZATION` as one of its allowable **Transaction Models** must issue a token that securitizes the formation of a contract between the licensor and the token holder. This effectively means whoever holds such token is automatically a licensee of the Smart License that is bound to the token. The token MUST be issued with the same UUID4 as the Smart License itself but without hyphens. The smallest unit of the token MUST be `1`. The token MAY be open or closed (Limited Edition) for re-issue. The token issue transaction must contain the custom fields `info` and `type`.  `info` should be a short  description about the Smart License. `type` must be set to `smart-license`.
 
 ## Data Model
 
-### OVerview
+### Overview
 
 ![smartlicense-anatomy](images/smartlicense-anatomy.svg)
 
@@ -161,9 +160,12 @@ A **Smart License** that specifies `CHAIN_TOKENIZATION` as one of its allowable 
 
 A **Smart License** is published as a JSON object to the **smart-license** stream on the Content Blockchain. The primary key for the stream-item is a self generated UUID4.
 
-The **ISCC codes** of the licensed materials MUST be used as secondary keys of the stream-item. 
+The **ISCC codes** of the licensed materials SHOULD be used as secondary keys of the stream-item. 
 
-By default the **Wallet-ID** of the transaction that publishes the stream-item (the stream-item publisher) is assumed to be the **Licensor** of the referenced content and also the recipient (payment address) of any on-chain payments that the Smart License defines as acceptable. Both assumptions MAY be overridden by the contents of the Smart License json object. Future Smart License versions might allow for multisig stream-items. Until then multisig-stream items are to be treated as invalid by applications.
+By default the **Wallet-ID** of the transaction that publishes the stream-item (the stream-item publisher) is assumed to be the **Licensor** of the referenced content and also the recipient (payment address) of any on-chain payments that the Smart License defines as acceptable. Both assumptions MAY be overridden by the contents of the Smart License json object. 
+
+!!! note
+    Future Smart License versions might allow for multisig stream-items. Until then multisig-stream items are to be treated as invalid by applications.
 
 Alternatively a Smart License may be published to privately controlled streams that are Smart License compatible. A list of Smart License compatible streams will be published and maintained by a community of elected users with write permissions to the closed `smart-license-streams` stream.
 
@@ -187,7 +189,9 @@ The template engine used to render the human readable contract. If empty or omit
 
 The licensed material(s) referenced by a list of one or multiple identifiers.
 
-If this field is empty or omitted the licensed material(s) are assumed to be referenced by the secondary keys of the Smart License stream-item. By default and for reasons of discoverability (stream indexing) and storage space efficiency the licensed materials SHOULD only be referenced by secondary keys of the stream-item. The default identifier type is an ISCC.
+If this field is empty or omitted the licensed material(s) are assumed to be referenced by the secondary keys of the Smart License stream-item. The default identifier type is an ISCC.
+
+By default and for reasons of discoverability (stream indexing) and storage space efficiency the licensed materials SHOULD only be referenced by secondary keys of the stream-item.
 
 This field allows the **Smart License** data model to work as a message outside of the context of a Content Blockchain stream-item. If this field is used, the secondary stream-item keys must either be non-existent or an exact match of those secondary keys. Any other combination must be treated as invalid.
 
@@ -249,7 +253,10 @@ able support features like:
 - verify on the blockchain that the user has a valid license for the requested content.
 - deliver/stream the content to the user.
 
-Ultimately the content delivery system behind the access url is application specific. In the future we might define a standard protocol for a content delivery system.
+Ultimately the content delivery system behind the access url is application specific. 
+
+!!! note
+    Future versions of this CIP might define a standard protocol for a content delivery system.
 
 ## Governance
 
@@ -263,70 +270,4 @@ To further protect intellectual property rights and prevent abuse the **Content 
 - Possibility of reputational scoring based on chain history.
 
 
-# OLD NOTEs (to reworked)
 
-## Schema
-
-The SmartLicense protocol uses multiple streams. All streams are readable and 
-writable by every blockchain participant. A SmartLicense is identified by a 
-publisher provided UUID Version 4. 
-See [smartlicense.proto](../smartlicense/smartlicense.proto) for current state 
-of data structure for SmartLicenses.
-
-## Streams
-
-- `smartlicense`: the primary stream to publish SmartLicenses
-- `smartlicense-attestation`: for publishing license attestations
-
-## Transaction Models
-
-### Attestation Example
-
-This is an example that demostrates attestation based licensing process.
-
-#### Creating an attestion based SmartLicense
-
-A publisher creates a SmartLicense with a frontend application. The 
-application then creates an encoded version of the data collected from the 
-user. A minimal JSON-encoded SmartLicense looks like this:
-
-```json
-{
-  	"materials": ["2EvGugzdGh5Zp-2LpzWi7kt2kUA-2LpprH51GMPhq-2VhLRzBEdDLa4"],
-  	"activation_modes": ["ON_CHAIN_ATTESTATION"]
-}
-```
-
-In this example the `licensors` and the `payment_address` fields are not 
-explicitly specified. Both will be set  to the **Wallet-ID** of the entity 
-that published the SmartLicense to the blockchain. The application also 
-generates a **UUID4** as identifier for a specific SmartLicense. The 
-application publishes the SmartLicense as a multichain stream-item signed by 
-the publisher to the `smartlicense` stream with the **UUID4** as key and the 
-SmartLicense as data. The data is published in a compact binary encoding 
-(protobuf).
-
-#### Issuing  a License to a user
-
-The publisher registers an entry in the  `smartlicense-attestation` - stream 
-with the **Wallet-ID** of the user as key and the **SmartLicense UUID4** as 
-data.
-
-#### Verifying a License for a user
-
-Given an ISCC content identifier:
-
-- Ask the user to sign a random nonce with his Wallet-ID
-- Lookup the `smartlicense-attestation` stream for SmartLicenses attested to 
-the user
-- ...
-
-### On-Chain Payment
-...
-
-## Validation
-
-The first time given UUID4 is published to the stream as an item-key it is 
-considered to be owned by the publishing Wallet-ID(s). Subsequent stream
-entries with the same UUID4 key must be ignored if they are signed by a 
-different Wallet-ID.
